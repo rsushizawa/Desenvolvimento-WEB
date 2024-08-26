@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LAB02</title>
+    <style>
+        .conteiner{
+            border: 1px solid black;
+            margin: 10px;
+            padding-left: 20px
+        }
+        .item{
+            background-color: #b7b4ad;
+            color: black;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 10px;
+            outline-style: groove;
+        }
+        #header div{
+            outline-style: dotted;
+            padding-left: 10px;
+        }
+        #header p{
+            text-align-last: justify;
+            text-indent: 50px;
+        }
+        #Cabeçalho h1{
+            text-align: center;
+        }
+        #Cabeçalho h1{
+            color: #283c40;
+            text-shadow: 1px 1px 4px black;
+        }
+
+        body{
+            background-color: #c1cac3;
+            background-image: linear-gradient(#c1cac3, #283c40);
+            font-family: Arial, Helvetica, sans-serif;
+        }
+        nav a{
+            color: #283c40;
+        }
+        footer{
+            color:lightslategray;
+        }
+
+    </style>
+</head>
+<body>
+    <div id="Cabeçalho">
+        <h1>LAB02</h1>
+        <nav>
+            <ol>
+                <li>
+                    <a href="#header">Cabeçalhos e Parágrafos</a>
+                </li>
+                <li>
+                    <a href="#listas">Listas</a>
+                </li>
+                <li>
+                    <a href="#form">Formulário</a>
+                </li>
+                <li>
+                    <a href="#graph">Elementos Gráficos</a>
+                </li>
+                <li>
+                    <a href="#midia">Incorporação de Mídia</a>
+                </li>
+            </ol>
+        </nav>
+    </div>
+    <main>
+        <section id="header" class="item">
+            <h2>1. Cabeçalhos e Parágrafos</h1>
+            <h3>Cabeçalhos</h3>
+            <div>
+                <h1>Header 1</h1>
+                <h2>Header 2</h2>
+                <h3>Header 3</h3>
+                <h4>Header 4</h4>
+                <h5>Header 5</h5>
+                <h6>Header 6</h6>
+            </div>
+            <h3>Parágrafos</h3>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas eu consectetur nulla, quis interdum justo. Sed sollicitudin lorem eget purus efficitur, id dictum velit laoreet. Pellentesque pharetra vitae velit at eleifend. Integer semper ex et varius molestie. Nulla aliquet lacus in libero blandit auctor. Curabitur quis tellus pharetra, vestibulum tellus eget, suscipit lectus. Cras arcu magna, scelerisque quis dui semper, ullamcorper tempor risus. Praesent ac diam consequat sem varius elementum. Donec ultrices turpis in turpis ultrices, vitae interdum ante dictum. Quisque ac convallis neque, a rutrum ex. Cras lobortis gravida sem, non rutrum dolor vestibulum id. Aenean leo augue, congue ut arcu sagittis, ornare semper nulla. Nunc malesuada augue quam, vitae pretium neque gravida ut. Suspendisse hendrerit in lectus eu malesuada.</p>
+            <p>Mauris a tortor viverra, placerat turpis posuere, lobortis elit. Donec elementum mollis diam. Sed feugiat nisi a lorem viverra euismod. Phasellus semper laoreet molestie. Aenean tempor eget nunc eu tempus. Donec condimentum luctus purus, nec porttitor eros. Nam euismod ligula nunc, a vehicula ante pretium et. Pellentesque non justo quis dui lobortis efficitur. Sed feugiat tincidunt diam, sed interdum nisi molestie sit amet. Ut interdum in erat ac suscipit. Maecenas ante quam, varius id ante at, elementum mollis dui. Suspendisse blandit metus ut consectetur tincidunt. Nullam hendrerit velit ut mi tempus maximus. Nunc rutrum commodo ultrices.</p>
+            
+        </section>
+        
+        <section id="listas" class="item">
+            <h2>2. Listas</h2>
+            <h3>Não Ordenadas</h3>
+            <ul>
+                <li>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                </li>
+                <li>
+                    <p>Donec accumsan nisi quis metus tincidunt, sed pulvinar urna elementum.</p>
+                </li>
+                <li>
+                    <p>Nulla at sem ac tortor porttitor porttitor iaculis at dolor.</p>
+                </li>
+            </ul>
+            <h3>Ordenadas</h3>
+            <ol>
+                <li>
+                    <p>Banana</p>
+                </li>
+                <li>
+                    <p>Maçã</p>
+                </li>
+                <li>
+                    <p>Melancia</p>
+                </li>
+            </ol>
+        </section>
+        <section id="form" class="item">
+            <h2>3. Formulário</h2>
+            <form action="enquete">
+                <label for="name">Nome</label>
+                <input type="text">
+                <br>
+                <br>
+                <label for="fruta">Fruta favorita</label>
+                <select name="fruta">
+                    <option value="maca">Maçã</option>
+                    <option value="banana">Banana</option>
+                    <option value="melancia">Melancia</option>
+                </select>    
+                <br>
+                <br>
+                <label for="coment">Comentários adicionais:</label>
+                <br>
+                <textarea name="coment" id="coment" rows="4" cols="50"></textarea>
+                <br>
+                <br>
+                <input type="button" value="Enviar">
+            </form>
+        </section>
+        <section id="graph" class="item">
+            <h2>4. Elementos Gráficos</h2>
+            <div class="conteiner">
+                <h3>Canvas</h3>
+                <canvas id="myCanvas">
+                    Your browser does not support the canvas tag.
+                 </canvas>
+                    
+                <script>
+                    let canvas = document.getElementById("myCanvas");
+                    let ctx = canvas.getContext("2d");
+                    ctx.fillStyle = "#FF0000";
+                    ctx.fillRect(0, 0, 100, 80);
+                </script>
+            </div>
+            
+            <div class="conteiner">
+                <h3>SVG</h3>
+                <svg width="100" height="100">
+                    <circle cx="50" cy="50" r="40" stroke="green" stroke-width="4" fill="yellow" />
+                </svg>
+            </div>
+        </section>
+        <section id="midia" class="item">
+            <h2>5. Incorporação de Mídia</h2>
+            <h3>Audio</h3>
+            <audio controls >
+                <source src="https://www.w3schools.com/html/horse.mp3" type="audio/mp3">
+            </audio>
+            <br>
+            <br>
+            <h3>Video</h3>
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/F2YpXC1itEE?si=lDAOAU14_m8dErj_" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        </section>
+    </main>
+    <footer>&copy; Rodrigo Seiji Y. U. 2024 Trabalho de PI:Desenvolvimento WEB</footer>
+</body>
+</html>
