@@ -9,16 +9,10 @@
 <body>
     <div id="quiz-container">
         <h1>Who's That Pokemon?</h1>
-        <div id="question-container"> <!-- Container onde as perguntas serão carregadas -->
-            <!-- Perguntas serão inseridas aqui pelo JavaScript -->
-        </div>
-        <button onclick="submitAnswers()">Submit Answers</button> <!-- Botão para submeter respostas -->
-        <div id="result"></div> <!-- Container onde o resultado será exibido -->
-        <div id="respostasErradas">
-            <h1>Respostas Erradas</h1>
-            <button onclick="location.reload()">Tentar Denovo</button>
-        </div>
-        
+        <div id="question-container"></div>
+        <button onclick="submitAnswers()">Submit Answers</button> 
+        <div id="result"></div> 
+        <button onclick="location.reload()">Tentar Denovo</button>
     </div>
     <script src="script.js"></script>
 </body>

@@ -30,16 +30,16 @@ const questions = [
         correctAnswerImg:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTjJuWeY5_2YEmUt4cRrVKCRCVR_L35JO4n_A&s"
     }
 ];
-
+const questionContainer = document.getElementById('question-container');
 // Carrega perguntas na página
 function loadQuestions() {
-    const questionContainer = document.getElementById('question-container');
     questions.forEach((q, index) => {
         const div = document.createElement('div');
+        div.id = `question-${index}`;
         div.innerHTML = `<img src="${q.question}" alt="">`;
         q.answers.forEach((answer, i) => {
             div.innerHTML += `<label>
-                <input type="radio" name="question${index}" value="${i}"> ${answer}
+                <input type="radio" name="question${index}" value="${i}">${answer}
             </label><br>`;
         });
         questionContainer.appendChild(div);
@@ -53,16 +53,34 @@ function submitAnswers() {
         const selectedAnswer = document.querySelector(`input[name="question${index}"]:checked`);
         if (selectedAnswer && parseInt(selectedAnswer.value) === q.correctAnswer) {
             score++;
+            selectedAnswer.parentElement.style.color = 'green';
+            selectedAnswer.parentElement.innerHTML += "<span>Correct Answer</span>"
         }
         else{
-            let div = document.createElement('div');
-            div.innerHTML = `<img src="${q.question}" alt="">`;
-            div.innerHTML += `<img src="${q.correctAnswerImg}" alt="">`;
-            document.getElementById('respostasErradas').appendChild(div);
+            // let img = document.createElement('img');
+            let span = document.createElement('span');
+            span.classList.toggle('showAnswer');
+            span.id = index;
+            span.innerHTML = "Show";
+            // img.src = q.correctAnswerImg;
+            // document.getElementById(`question-${index}`).appendChild(img);
+            selectedAnswer.parentElement.style.color = 'red';
+            selectedAnswer.parentElement.appendChild(span);
         }
     });
     document.getElementById('result').innerHTML = `You scored ${score} out of ${questions.length}`;
     document.getElementById('respostasErradas').style.display = 'block';
+}
+
+
+questionContainer.addEventListener('click',showAnswer);
+
+function showAnswer(e){
+    if(e.target.tagName == "SPAN"){
+        let img = document.createElement('img');
+        img.src = questions[parseInt(e.target.id)].correctAnswerImg;
+        e.target.parentElement.appendChild(img)
+    }
 }
 
 window.onload = loadQuestions;
