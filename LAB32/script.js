@@ -2,28 +2,32 @@ const questions = [
     {
         question: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQy_uJaBu-kwf2g6JDfVnHQPCyFm-jFs12eQw&s",
         answers: ["Pikachu", "Charlizard","Bulbasaur","Venusaur"],
-        correctAnswer: 0
+        correctAnswer: 0,
+        correctAnswerImg:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQZNrRfZ3f_1HM0ysJY0U_bwG1exjYFQT399_d8LQTiPCpDYNOZZ0H6nnZ0MA57PfBI25E&usqp=CAU"
     },
     {
         question: "https://i.ytimg.com/vi/Svv8adsRCY0/hqdefault.jpg",
         answers: ["Charmander", "Charlizard","Bulbasaur","Venusaur"],
-        correctAnswer: 0
-        
+        correctAnswer: 0,
+        correctAnswerImg:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQODCA1AzibzgMKAoV9CLIPI76pMQO_MWvHuA&s"
     },
     {
         question: "https://preview.redd.it/whos-that-pokemon-its-charizard-v0-ovw7glsr22w81.jpg?width=640&crop=smart&auto=webp&s=85e23d813432d03ef63dcc7ee680b30c46fef9f4",
         answers: ["Pikachu", "Charlizard","Bulbasaur","Venusaur"],
-        correctAnswer: 1
+        correctAnswer: 1,
+        correctAnswerImg:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTlQKFvQPGyphZ0RX5JskuURS8cJKKtNLl4UQ&s"
     },
     {
         question: "https://i.ytimg.com/vi/-EyeGROXZmo/maxresdefault.jpg",
         answers: ["Pikachu", "Charlizard","Bulbasaur","Venusaur"],
-        correctAnswer: 3
+        correctAnswer: 3,
+        correctAnswerImg:"https://preview.redd.it/ctea5owccxt11.jpg?width=640&crop=smart&auto=webp&s=25d54531c6400beadced9e3a3831db6908e75826"
     },
     {
         question: "https://i.ytimg.com/vi/JtM4p0phtio/maxresdefault.jpg",
         answers: ["Pikachu", "Charlizard","Bulbasaur","Venusaur"],
-        correctAnswer: 2
+        correctAnswer: 0,
+        correctAnswerImg:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTjJuWeY5_2YEmUt4cRrVKCRCVR_L35JO4n_A&s"
     }
 ];
 
@@ -50,8 +54,15 @@ function submitAnswers() {
         if (selectedAnswer && parseInt(selectedAnswer.value) === q.correctAnswer) {
             score++;
         }
+        else{
+            let div = document.createElement('div');
+            div.innerHTML = `<img src="${q.question}" alt="">`;
+            div.innerHTML += `<img src="${q.correctAnswerImg}" alt="">`;
+            document.getElementById('respostasErradas').appendChild(div);
+        }
     });
     document.getElementById('result').innerHTML = `You scored ${score} out of ${questions.length}`;
+    document.getElementById('respostasErradas').style.display = 'block';
 }
 
 window.onload = loadQuestions;

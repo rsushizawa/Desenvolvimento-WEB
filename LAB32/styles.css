@@ -15,3 +15,7 @@ label {
 img{
     width: 400px;
 }
+
+#respostasErradas{
+    display: none;
+}
