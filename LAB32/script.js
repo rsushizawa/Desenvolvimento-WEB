@@ -57,13 +57,10 @@ function submitAnswers() {
             selectedAnswer.parentElement.innerHTML += "<span>Correct Answer</span>"
         }
         else{
-            // let img = document.createElement('img');
             let span = document.createElement('span');
             span.classList.toggle('showAnswer');
             span.id = index;
             span.innerHTML = "Show";
-            // img.src = q.correctAnswerImg;
-            // document.getElementById(`question-${index}`).appendChild(img);
             selectedAnswer.parentElement.style.color = 'red';
             selectedAnswer.parentElement.appendChild(span);
         }
@@ -79,8 +76,8 @@ function showAnswer(e){
     if(e.target.tagName == "SPAN"){
         let img = document.createElement('img');
         img.src = questions[parseInt(e.target.id)].correctAnswerImg;
-        e.target.parentElement.appendChild(img)
+        e.target.parentElement.appendChild(img);
     }
 }
-
+//console.table(questions);
 window.onload = loadQuestions;
