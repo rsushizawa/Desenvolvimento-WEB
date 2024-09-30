@@ -6,7 +6,7 @@
 
 - [@rsushizawa](https://github.com/rsushizawa) Rodrigo Seiji Yugoshi Ushizawa
     - RA: 24009811
--[@viniciusMoraesChaves](https://github.com/viniciusMoraesChaves) Vinícius de Moraes Chaves
+- [@viniciusMoraesChaves](https://github.com/viniciusMoraesChaves) Vinícius de Moraes Chaves
     - RA: 
 
 ## Pacotees NPM utilizados
