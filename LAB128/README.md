@@ -7,6 +7,9 @@
 - [@rsushizawa](https://github.com/rsushizawa) Rodrigo Seiji Yugoshi Ushizawa
     - RA: 24009811
 
+## Pacotees NPM utilizados
+Express, http, Path, Nodemailer, Dotenv
+
 ## Visão geral do trabalho
 
 Neste laboratório, você será desafiado a desenvolver um formulário web usando HTML, CSS e,
