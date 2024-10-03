@@ -7,7 +7,7 @@ require('dotenv').config();
 
 const API_KEY = process.env.API_KEY // Senha de acesso para APP do gmail
 const ORG_EMAIL = process.env.ORG_EMAIL // email do gmail
-const port = 3000; // porta
+const port = process.env.PORT; // porta
 
 app.set("port",port)
 app.use(express.json())
@@ -22,9 +22,9 @@ app.get('/',(req,res) => {
 app.post("/submit", (req,res) => {
 
     // lê as querys do formulário
-    let name = req.query.name;
-    let email = req.query.email;
-    let msg = req.query.message;
+    let name = req.body.name;
+    let email = req.body.email;
+    let msg = req.body.message;
 
     var transporter = nodejsmailer.createTransport({
         service:'gmail',
@@ -37,8 +37,8 @@ app.post("/submit", (req,res) => {
     var mailOptions = {
         from: email,
         to: ORG_EMAIL, // email do membro da equipe
-        subject: name,
-        text: msg
+        subject: `${name}`,
+        text: `${name} sent a message for you: ${msg}`
     }
 
     transporter.sendMail(mailOptions, function(erro,info){
