@@ -1,3 +1,3 @@
 ﻿# Desenvolvimento-WEB
 
- I do not allow the software in this repository to be used, modified, or shared without permission from the authors.
+The software in this repository can't be used, modified, or shared without the permission from the authors.
