@@ -7,14 +7,13 @@
 </head>
 <body>
     <div>
-        <form action="/send2fa" method="post">
+        <form action="/submit" method="post">
+            <input type="text" name="name" placeholder="Digite o seu nome" required>
             <input type="email" name="email" placeholder="Digite o seu email" required>
-            <button type="submit">Send 2FA</button>
-        </form>
-
-        <form action="/verify2fa" method="post">
-            <input type="text" id="secret" name="secret" placeholder="Digite o seu código 2FA" required>
-            <button type="submit">submit</button>
+            <textarea name="message" placeholder="Digite uma mensagem" required></textarea>
+            <button type="submit">Submit</button>
+        
+            <div id="result"></div>
         </form>
     </div>
 </body>

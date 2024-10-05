@@ -35,22 +35,74 @@ app.post("/submit", (req,res) => {
     });
 
     var mailOptions = {
-        from: email,
+        from: {
+            name: 'LAB128 Server',
+            address: email
+        },
         to: ORG_EMAIL, // email do membro da equipe
-        subject: `${name}`,
-        text: `${name} sent a message for you: ${msg}`
+        subject: `${name} sent a message for You `,
+        text: `Name: ${name} \nEmail: ${email} \nMessage: ${msg} `
     }
 
     transporter.sendMail(mailOptions, function(erro,info){
         if (erro) {
             console.log(erro)
         } else {
-            console.log("Email Send: " + info.response)
+            console.log("Email Sent: " + info.response)
         }
         res.redirect("/")
     })
 })
 
+//função que gera uma senha aleatória
+function generateRandomCode(length){
+    const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890";
+    let result = "";
+    for(let i=0; i<length; i++){
+        result += chars.charAt(Math.floor(Math.random() * chars.length));
+    }
+    return result;
+}
+//rota para a verificação de duas etapas
+app.post("/send2fa", (req,res) => {
+    msg = generateRandomCode(6);
+    let email = req.body.email;
+
+    var transporter = nodejsmailer.createTransport({
+        service:'gmail',
+        auth:{
+            user: ORG_EMAIL,
+            pass: API_KEY
+        }
+    });
+
+    var mailOptions = {
+        from: email,
+        to: ORG_EMAIL, // email do membro da equipe
+        subject: "Your 2FA Code",
+        text: `your 2fa code: ${msg}`
+    }
+
+    transporter.sendMail(mailOptions, function(erro,info){
+        if (erro) {
+            console.log(erro)
+        } else {
+            console.log("2FA Sent: " + info.response)
+        }
+        res.redirect("/")
+    })
+})
+
+// Rota para verificação do codigo enviado por email com o digitado pelo usuario
+app.post("/verify2fa", (req, res) => {
+    let inputUsuario = req.body.secret; 
+
+    if (inputUsuario === msg) {
+        res.sendFile(path.join(__dirname, 'page/email.html'));
+    } else {
+        res.status(401).send("Invalid 2FA code. Please try again.");
+    }
+});
 
 // inicializa o servido
 app.listen(port, () => {
