@@ -12,11 +12,12 @@ const port = process.env.PORT; // porta
 app.set("port",port)
 app.use(express.json())
 app.use(express.urlencoded( { extended:true } ))
-app.use(express.static(path.join(__dirname,"page/index.html")))
+app.use(express.static(path.join(__dirname,"public/index.html")))
+app.use(express.static('public'))
 
 // define as rotas
 app.get('/',(req,res) => {
-    res.sendFile(path.join(__dirname,'page/index.html'));
+    res.sendFile(path.join(__dirname,'public/index.html'));
 }); 
 
 app.post("/submit", (req,res) => {
@@ -80,7 +81,7 @@ app.post("/send2fa", (req,res) => {
         from: email,
         to: ORG_EMAIL, // email do membro da equipe
         subject: "Your 2FA Code",
-        text: `your 2fa code: ${msg}`
+        text: `Your 2FA Code: ${msg}`
     }
 
     transporter.sendMail(mailOptions, function(erro,info){
@@ -98,7 +99,7 @@ app.post("/verify2fa", (req, res) => {
     let inputUsuario = req.body.secret; 
 
     if (inputUsuario === msg) {
-        res.sendFile(path.join(__dirname, 'page/email.html'));
+        res.sendFile(path.join(__dirname, 'public/email.html'));
     } else {
         res.status(401).send("Invalid 2FA code. Please try again.");
     }
