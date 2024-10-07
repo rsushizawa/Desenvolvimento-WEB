@@ -8,6 +8,8 @@
     - RA: 24009811
 - [@viniciusMoraesChaves](https://github.com/viniciusMoraesChaves) Vinícius de Moraes Chaves
     - RA: 
+- [@danielwuverycool](https://github.com/danielwuverycool) Daniel Wu
+    - RA: 24021993
 
 ## Pacotees NPM utilizados
 Express, http, Path, Nodemailer, Dotenv
